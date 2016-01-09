@@ -2,40 +2,37 @@
   display: none; }
 
 .gallery {
-  width: 84%; }
+  width: 84%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center; }
 
 .gutter {
   margin-top: 4px; }
+
+.verticalGutter {
+  padding: 0px 8px; }
 
 .plusButton {
   width: 13%;
   display: flex;
   align-items: stretch;
   justify-content: center; }
-  .plusButton.bottomGallery {
-    border-right: 4px solid #404040;
-    margin-left: 5px;
-    margin-right: 1%; }
-  .plusButton.topGallery {
-    margin-left: 5px;
-    margin-right: 1%; }
+  .plusButton.light {
+    margin-left: -3px; }
 
-.rightGallery {
-  margin-right: 5px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center; }
+.right {
+  margin-right: 5px; }
 
-.topGallery {
-  height: 250px;
-  border: 1px solid grey; }
-
-.bottomGallery {
-  height: 250px; }
+.left {
+  margin-left: 5px; }
+  .left.light {
+    margin-left: 11px; }
 
 .outerWrapper {
   display: flex;
-  justify-content: flex-end; }
+  justify-content: flex-end;
+  height: 250px; }
 
 .dark {
   background-color: #404040;
@@ -43,21 +40,13 @@
 
 .light {
   background-color: #fefefe;
-  border: 4px solid #404040; }
+  border: 3px solid #404040;
+  color: #404040; }
 
-.addToGallery {
+.button {
   border: 0px;
-  padding: 0px; }
-
-input.addToGallery {
-  margin: 0px;
-  padding: 0px;
-  display: inline-block;
   font-size: 200px; }
-  input.addToGallery:hover {
+  .button:hover {
     cursor: pointer; }
-
-img {
-  justify-content: space-around; }
 
 /*# sourceMappingURL=style.css.map */

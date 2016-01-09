@@ -8,10 +8,17 @@
 
 .gallery {
 	width: $galleryWidth;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 }
 
 .gutter{
-	margin-top: 4px;
+	margin-top: $gutterpx;
+}
+
+.verticalGutter{
+	padding: 0px $verticalGutterpx;
 }
 
 .plusButton {
@@ -20,41 +27,27 @@
 	align-items: stretch;
 	justify-content: center;
 
-		&.bottomGallery {
-			border-right: 4px solid $darkGrey;
-			margin-left: 5px;
-			margin-right: 1%;
-		}
-
-		&.topGallery {
-			margin-left: 5px;			
-			margin-right: 1%;
-		}
-}
-
-.rightGallery {
-	margin-right: 5px;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-}
-
-.topGallery {
-	height: 250px;	
-	border: 1px solid grey;
-
-	& .rightGallery {
-
+	&.light {
+		margin-left: -3px;
 	}
 }
 
-.bottomGallery {
-	height: 250px;
+.right {
+	margin-right: $sideMargin;
+}
+
+.left {
+	margin-left: $sideMargin;
+
+	&.light {
+		margin-left: 2 * $borderpx + $sideMargin;
+	}
 }
 
 .outerWrapper {
 	display: flex;
 	justify-content: flex-end;
+	height: $bandHeight;
 }
 
 .dark {
@@ -64,30 +57,19 @@
 
 .light {
 	background-color: rgb(254, 254, 254);
-	border: 4px solid $darkGrey;
+	border: $borderpx solid $darkGrey;
+	color: $darkGrey;
 }
 
+img {
+		// justify-content: space-around;
+}
 
-.addToGallery {
+.button {
 	border: 0px;
-	padding: 0px;
-}
-
-input.addToGallery {
-	margin: 0px;
-	padding: 0px;
-	display: inline-block;
 	font-size: 200px;
 
 		&:hover {
 			cursor: pointer;
-		}
-
-		// &.light {
-		// 	color: $darkGrey;
-		// }
-}
-
-img {
-		justify-content: space-around;
+	}
 }

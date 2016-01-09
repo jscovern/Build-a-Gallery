@@ -25,10 +25,17 @@ function previewFile() { //concept taken from http://stackoverflow.com/questions
 
 $(document).ready(function() {
 
-	$(document).on('click', '.addToGallery', function(event) {
+	$(document).on('click', '.button', function(event) {
 		event.preventDefault();
-		    $('.darkWrapper.rightGallery').append("<input type='file' onchange=previewFile() data-id=" + (imageArray.length + 1) + "><br>");
-		    $('.darkWrapper.rightGallery').append("<img class='hidden' data-id=" + (imageArray.length + 1) + " src='' height='200' width='200'>");
+		// console.log($(event.target).parent().parent().attr('id'));
+		// console.log($(event.target).parent().siblings());
+		var band_id = $(event.target).attr('data-band_id');
+
+		    $(".gallery[data-band_id=" + band_id + "]").append("<input type='file' onchange=previewFile() data-id=" + (imageArray.length + 1) + "><br>");
+		    $(".gallery[data-band_id=" + band_id + "]").append("<img class='hidden' data-id=" + (imageArray.length + 1) + " src='' height='200' width='200'>");
+
+		    // $('.gallery').append("<input type='file' onchange=previewFile() data-id=" + (imageArray.length + 1) + "><br>");
+		    // $('.gallery').append("<img class='hidden' data-id=" + (imageArray.length + 1) + " src='' height='200' width='200'>");
 	});
 
 });
