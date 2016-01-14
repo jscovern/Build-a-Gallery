@@ -5,17 +5,30 @@
 		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 		<script src="http://code.jquery.com/jquery-2.1.4.js"></script>
 		<script src="assets/javascript/javascript.js"></script>
+		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine:bold,bolditalic">
 	</head>
 	
 	<body>
-		<h1>Sample</h1>
-
-		<div class="outerWrapper">
-			<div class ="left dark plusButton">
-				<input class="dark button" data-band_id="1" type="submit" value="+">
+		<div id="headerWrapper" class="wrapper">
+			<div class="left light gallery">
+				Build Your Own Galleries!
 			</div>
 
 			<div class="verticalGutter"></div>
+
+			<div class="right light plusButton">
+				Logo Goes Here!
+			</div>
+		</div>
+
+		<div class="gutter"></div>
+
+		<div class="outerWrapper wrapper">
+			<div class ="left dark plusButton" data-band_id="1">
+				<input class="dark button" data-band_id="1" type="submit" value="+">
+			</div>
+
+			<div class="verticalGutter" data-band_id="1"></div>
 
 			<div class="dark gallery right" data-band_id="1"> <!-- this is where the images get added to -->
 			</div>
@@ -23,18 +36,45 @@
 
 		<div class="gutter"></div>
 	
-		<div class="outerWrapper">
-				<div class ="left light plusButton">
+		<div class="outerWrapper wrapper">
+				<div class ="left light plusButton" data-band_id="2">
 					<input class="light button" data-band_id="2" type="submit" value="+">
 				</div>
 
-				<div class="verticalGutter"></div>
+				<div class="verticalGutter" data-band_id="2"></div>
 
 				<div class="light gallery right" data-band_id="2"> <!-- this is where the images get added to -->
 				</div>
 		</div>
 
 		<div class="gutter"></div>
+
+				<div class="gutter"></div>
+
+		<div class="outerWrapper wrapper">
+			<div class="dark gallery left" data-band_id="3"> <!-- this is where the images get added to -->
+			</div>
+
+			<div class="verticalGutter" data-band_id="3"></div>
+
+			<div class ="right dark plusButton" data-band_id="3">
+				<input class="dark button" data-band_id="3" type="submit" value="+">
+			</div>
+
+		</div>
+
+		<div class="gutter"></div>
+	
+		<div class="outerWrapper wrapper">
+				<div class="light gallery left" data-band_id="4"> <!-- this is where the images get added to -->
+				</div>
+
+				<div class="verticalGutter" data-band_id="4"></div>
+
+				<div class ="right light plusButton data-band_id="4"">
+					<input class="light button" data-band_id="4" type="submit" value="+">
+				</div>
+		</div>
 
 	</body>
 </html>

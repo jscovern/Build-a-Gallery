@@ -2,15 +2,12 @@
 
 @import 'variables';  //importing the "partial" for variables (_variables.scss)
 
-.hidden {
-	display: none;
-}
-
 .gallery {
 	width: $galleryWidth;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+	box-sizing: border-box;
 }
 
 .gutter{
@@ -26,10 +23,7 @@
 	display: flex;
 	align-items: stretch;
 	justify-content: center;
-
-	&.light {
-		margin-left: -3px;
-	}
+	box-sizing: border-box;
 }
 
 .right {
@@ -44,9 +38,12 @@
 	}
 }
 
-.outerWrapper {
+.wrapper {
 	display: flex;
 	justify-content: flex-end;
+}
+
+.outerWrapper {
 	height: $bandHeight;
 }
 
@@ -61,8 +58,10 @@
 	color: $darkGrey;
 }
 
-img {
-		// justify-content: space-around;
+.imgPreview {
+	height: $galleryImageHeight;
+	width: $galleryImageWidth;
+	// z-index: -1;
 }
 
 .button {
@@ -72,4 +71,46 @@ img {
 		&:hover {
 			cursor: pointer;
 	}
+}
+
+#headerWrapper {
+	height: $headerHeight;
+	font-family: 'Tangerine';
+	font-size: 48px;
+	font-style: bold;
+
+	& .plusButton{
+		font-size: 30px;
+	}
+}
+
+input[type="file"] { //this is done so the choose file button is off-screen, because I auto-click it from the plus button using jquery
+	margin-left: -10000px;
+}
+
+.deleteX {
+	// color: black;
+	margin-left: 1px;
+	// margin-top: -20px;
+
+	&:hover {
+		cursor: pointer;
+		color: red;
+	}
+}
+
+.imageWrapper {
+	display: flex;
+	align-items: flex-start;
+	// z-index: 1;
+}
+
+.hidden {
+	display: none;
+}
+
+.plusButtonHidden {
+	width: $galleryWidth + $plusButtonWidth;
+	// box-sizing: border-box;
+	// width: 100%;
 }
