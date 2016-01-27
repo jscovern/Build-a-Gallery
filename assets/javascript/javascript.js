@@ -48,7 +48,7 @@ function findDataID() {
 			highNum = imageArray[i].substring(imageArray[i].search("_") + 1, imageArray[i].length);
 		}
 	}
-		return highNum + 1;
+		return parseInt(highNum) + 1;
 }
 
 function numImageInGallery(band_id) {
