@@ -35,7 +35,9 @@
 
 .dark {
   background-color: #404040;
-  color: white; }
+  color: white;
+  border-color: #404040;
+  border-style: solid; }
 
 .light {
   background-color: #fefefe;

@@ -5,13 +5,9 @@ function previewFile() { //concept taken from http://stackoverflow.com/questions
 	//var myImage = $("img[data-id=" + (imageArray.length + 1) + "]");
 	//var myImage = document.querySelector('img'); //finds the img element
 	var myImage = document.querySelector('img[data-id="' + findDataID() + '"]'); //finds the img element with the correct data-band id
-	console.log("myImage: "+document.querySelector('img[data-id="' + findDataID() + '"]'));
 	var myFile = document.querySelector('input[type=file][data-id="' + findDataID() + '"]').files[0]; //finds the input with a type of file
-	console.log("myfile: "+document.querySelector('input[type=file][data-id="' + findDataID() + '"]').files[0]);
 	var myFileUploader = document.querySelector('input[type=file][data-id="' + findDataID() + '"]');
-	console.log("myFileUploader: "+document.querySelector('input[type=file][data-id="' + findDataID() + '"]'));
 	var reader = new FileReader();
-	console.log(reader.result);
 	reader.onloadend = function() {
 		myImage.src = reader.result; //sets the src of the img on the page (which is called myImage here)
 	}
@@ -20,8 +16,6 @@ function previewFile() { //concept taken from http://stackoverflow.com/questions
 		reader.readAsDataURL(myFile); //reads the file that was uploaded, as a url
 		$(myImage).removeClass("hidden"); //removes the hidden class from the image
 		$(myFileUploader).addClass("hidden");
-		console.log($(myFileUploader).attr('data-id'));
-		console.log($(myFileUploader).parent().attr('data-band_id'));
 		imageArray.push($(myFileUploader).parent().attr('data-band_id') + "_" + $(myFileUploader).attr('data-id'));
 		
 	} else { //if a file wasn't uploaded, sets the src back to blank
@@ -33,7 +27,7 @@ function previewFile() { //concept taken from http://stackoverflow.com/questions
 
 function hidePlusButton(band_id) {
 	if (numImageInGallery(band_id) === imageInGalleryMax) { //only allow 5 images in each gallery
-				$("div.plusButton[data-band_id="+band_id+"]").addClass("hidden");
+				$("button.plusButton[data-band_id="+band_id+"]").addClass("hidden");
 				$("div.verticalGutter[data-band_id="+band_id+"]").addClass("hidden");
 				$("div.gallery[data-band_id=" + band_id + "]").addClass("plusButtonHidden");
 			}
@@ -41,7 +35,7 @@ function hidePlusButton(band_id) {
 
 function showPlusButton(band_id) {
 	if (numImageInGallery(band_id) < imageInGalleryMax) { //only allow 5 images in each gallery
-				$("div.plusButton[data-band_id="+band_id+"]").removeClass("hidden");
+				$("button.plusButton[data-band_id="+band_id+"]").removeClass("hidden");
 				$("div.verticalGutter[data-band_id="+band_id+"]").removeClass("hidden");
 				$("div.gallery[data-band_id=" + band_id + "]").removeClass("plusButtonHidden");
 			}
