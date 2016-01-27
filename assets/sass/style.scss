@@ -43,6 +43,11 @@
 	justify-content: flex-end;
 }
 
+.centerFlex {
+	display: flex;
+	justify-content: center;
+}
+
 .outerWrapper {
 	height: $bandHeight;
 }
@@ -72,6 +77,17 @@
 
 		&:hover {
 			cursor: pointer;
+	}
+}
+
+.addABand {
+	font-size: 50px;
+	border: 0px;
+	padding: 0px;
+	margin: 0px;
+
+	&:hover {
+		cursor: pointer;
 	}
 }
 

@@ -48,7 +48,17 @@ function findDataID() {
 			highNum = imageArray[i].substring(imageArray[i].search("_") + 1, imageArray[i].length);
 		}
 	}
-		return highNum + 1;
+		return parseInt(highNum) + 1;
+}
+
+function findBandID() {
+	var highNum=0;
+	$(".gallery").each(function() {
+		if (parseInt($(this).attr('data-band_id')) > highNum) {
+			highNum = parseInt($(this).attr('data-band_id'));
+		}
+	});
+	return parseInt(highNum) + 1;
 }
 
 function numImageInGallery(band_id) {
@@ -86,6 +96,13 @@ $(document).ready(function() {
 		$("input[type=file][data-id=" + dataID + "]").remove();
 		console.log("deleteX band_id: "+band_id);
 		showPlusButton(band_id);
+	});
+
+	$(document).on('click', '.addABand', function(event) {
+		var band_id = findBandID();
+		$("#bandWrapper").append("<div class='gutter'></div>");
+		$("#bandWrapper").append("<div class='outerWrapper wrapper'><div class='light gallery left' data-band_id="+band_id+"></div><div class='verticalGutter' data-band_id="+band_id+"></div><button class='right light plusButton' data-band_id="+band_id+"><input class='light button' data-band_id="+band_id+" type='submit' value='+'></button>")
+		console.log("next band id is: "+band_id);
 	});
 
 
