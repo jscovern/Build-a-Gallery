@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title></title>
+		<title>Share Your Best 4!</title>
 		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 		<script src="http://code.jquery.com/jquery-2.1.4.js"></script>
 		<script src="assets/javascript/javascript.js"></script>
@@ -9,15 +9,16 @@
 	</head>
 	
 	<body>
+		<div class="bodyWrapper">
 		<div id="headerWrapper" class="wrapper">
 			<div class="left light gallery">
-				Build Your Own Galleries!
+				Share Your Best 4!
 			</div>
 
 			<div class="verticalGutter"></div>
 
 			<div class="right light plusButton">
-				Logo Goes Here!
+				<img src="assets/images/bestieslogo.jpg">
 			</div>
 		</div>
 
@@ -81,9 +82,39 @@
 		<div class="gutter"></div>
 
 		<div class="centerFlex">
-			<button class="center light">
-				<input class="light addABand" type="submit" value="+ Add A Gallery Band +">
-			</band>
+			<div class="light bandSettings">
+
+				<div class="centerFlex">
+					<button class="addABand light" id="bandSettings">
+						+ Add A Gallery Band +
+					</button>
+				</div>
+
+				<div class="bandSettingsWrapper centerFlex hidden">
+					<form id="bandSettingsForm">
+						<div class="inputWrapper">
+							<label for="colorScheme">Background Color Scheme</label>
+							<input type="radio" name="colorScheme" value="light" checked>light
+							<input type="radio" name="colorScheme" value="dark">dark
+						</div>
+
+						<div class="inputWrapper">
+							<label for="galleryOrientation">Gallery Orientation</label>
+							<input type="radio" name="galleryOrientation" value="left" checked>left
+							<input type="radio" name="galleryOrientation" value="right">right
+						</div>
+						
+						<div class="centerFlex">
+							<button class="addABand light" id="submitSettings">
+								Submit
+							</button>
+						</div>
+						<div class="gutter">
+						</div>
+					</form>
+				</div>
+			</div>
 		</div>
+	</div>
 	</body>
 </html>
