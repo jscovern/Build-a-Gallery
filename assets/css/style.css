@@ -9,7 +9,7 @@
   margin-top: 4px; }
 
 .verticalGutter {
-  padding: 0px 8px; }
+  padding: 0px 0.35%; }
 
 .plusButton {
   width: 13%;
@@ -30,6 +30,10 @@
   display: flex;
   justify-content: flex-end; }
 
+.centerFlex {
+  display: flex;
+  justify-content: center; }
+
 .outerWrapper {
   height: 250px; }
 
@@ -44,14 +48,20 @@
   border: 3px solid #404040;
   color: #404040; }
 
-.imgPreview {
-  height: 200px;
-  width: 200px; }
-
 .button {
   border: 0px;
   font-size: 200px; }
   .button:hover {
+    cursor: pointer; }
+
+.addABand {
+  font-size: 50px;
+  padding: 0px;
+  margin: 0px;
+  font-family: "Calibri";
+  font-weight: bold;
+  width: 100%; }
+  .addABand:hover {
     cursor: pointer; }
 
 #headerWrapper {
@@ -71,14 +81,34 @@ input[type="file"] {
     cursor: pointer;
     color: red; }
 
-.imageWrapper {
+.packageWrapper {
   display: flex;
   align-items: flex-start; }
+
+.inputWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.imageWrapper {
+  height: 200px;
+  width: 200px;
+  overflow: hidden; }
 
 .hidden {
   display: none; }
 
 .plusButtonHidden {
-  width: 97%; }
+  box-sizing: border-box;
+  width: 97.35%; }
+
+.bandSettings {
+  font-size: 25px;
+  font-family: "Calibri";
+  font-weight: bold;
+  width: 48.675%; }
+
+#submitSettings:hover {
+  background-color: red; }
 
 /*# sourceMappingURL=style.css.map */

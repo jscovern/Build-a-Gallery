@@ -43,6 +43,11 @@
 	justify-content: flex-end;
 }
 
+.centerFlex {
+	display: flex;
+	justify-content: center;
+}
+
 .outerWrapper {
 	height: $bandHeight;
 }
@@ -61,8 +66,8 @@
 }
 
 .imgPreview {
-	height: $galleryImageHeight;
-	width: $galleryImageWidth;
+	// height: $galleryImageHeight;
+	// width: $galleryImageWidth;
 	// z-index: -1;
 }
 
@@ -72,6 +77,19 @@
 
 		&:hover {
 			cursor: pointer;
+	}
+}
+
+.addABand {
+	font-size: 50px;
+	padding: 0px;
+	margin: 0px;
+	font-family: "Calibri";
+	font-weight: bold;
+	width: 100%;
+
+	&:hover {
+		cursor: pointer;
 	}
 }
 
@@ -101,10 +119,26 @@ input[type="file"] { //this is done so the choose file button is off-screen, bec
 	}
 }
 
-.imageWrapper {
+.packageWrapper {
 	display: flex;
 	align-items: flex-start;
+}
 
+.inputWrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.imageWrapper {
+	height: $galleryImageHeight;
+	width: $galleryImageWidth;
+	overflow: hidden;
+
+	&:hover {
+		// overflow: visible;
+		// z-index: 10;
+	}
 	// z-index: 1;
 }
 
@@ -113,7 +147,20 @@ input[type="file"] { //this is done so the choose file button is off-screen, bec
 }
 
 .plusButtonHidden {
-	width: $galleryWidth + $plusButtonWidth;
-	// box-sizing: border-box;
+	box-sizing: border-box;
+	width: $galleryWidth + $plusButtonWidth + $verticalGutterpx;
 	// width: 100%;
+}
+
+.bandSettings {
+	font-size: 25px;
+	font-family: "Calibri";
+	font-weight: bold;
+	width: ($galleryWidth + $plusButtonWidth + $verticalGutterpx)/2;
+}
+
+#submitSettings {
+	&:hover {
+		background-color: red;
+	}
 }

@@ -16,7 +16,12 @@ function previewFile() { //concept taken from http://stackoverflow.com/questions
 		reader.readAsDataURL(myFile); //reads the file that was uploaded, as a url
 		$(myImage).removeClass("hidden"); //removes the hidden class from the image
 		$(myFileUploader).addClass("hidden");
-		imageArray.push($(myFileUploader).parent().attr('data-band_id') + "_" + $(myFileUploader).attr('data-id'));
+		// imageArray.push($(myFileUploader).parent().attr('data-band_id') + "_" + $(myFileUploader).attr('data-id'));
+		var myBandID=$(myFileUploader).parent().attr('data-band_id');
+		var myDataID=$(myFileUploader).attr('data-id');
+		var imageObj = {bandID: myBandID, dataID: myDataID};
+		imageArray.push(imageObj);
+		// imageArray.push({+"bandID:"+$(myFileUploader).parent().attr('data-band_id') + ",dataID:" + $(myFileUploader).attr('data-id')+});
 		
 	} else { //if a file wasn't uploaded, sets the src back to blank
 		myImage.src = "";
@@ -44,24 +49,44 @@ function showPlusButton(band_id) {
 function findDataID() {
 	var highNum=0;
 	for( i=0; i<imageArray.length; i++) {
-		if(imageArray[i].substring(imageArray[i].search("_") + 1, imageArray[i].length) > highNum) {
-			highNum = imageArray[i].substring(imageArray[i].search("_") + 1, imageArray[i].length);
+		if(imageArray[i].dataID > highNum) {
+		// if(imageArray[i].substring(imageArray[i].search("_") + 1, imageArray[i].length) > highNum) {
+			// highNum = imageArray[i].substring(imageArray[i].search("_") + 1, imageArray[i].length);
+			highNum = imageArray[i].dataID;
+
 		}
 	}
 		return parseInt(highNum) + 1;
+
+}
+
+function findBandID() {
+	var highNum=0;
+	$(".gallery").each(function() {
+		if (parseInt($(this).attr('data-band_id')) > highNum) {
+			highNum = parseInt($(this).attr('data-band_id'));
+		}
+	});
+	return parseInt(highNum) + 1;
 }
 
 function numImageInGallery(band_id) {
 	var imageCount = 0;
 
 	for(i=0; i<imageArray.length; i++) {
-		if(imageArray[i].substring(0,imageArray[i].search("_")) === band_id) {
+		// if(imageArray[i].substring(0,imageArray[i].search("_")) === band_id) {
+		if(imageArray[i].bandID === band_id) {
 			imageCount++;
 		}
 	}
 
 	return imageCount;
-	console.log("imageCount from numImageInGallery: "+imageCount);
+}
+
+function bandSettings(setting, checkedStatus) {
+	var bandSetting = $("input[name="+setting+"]:"+checkedStatus, "#bandSettingsForm").val();
+	console.log("from the function: "+bandSetting);
+	return bandSetting;
 }
 
 $(document).ready(function() {
@@ -70,8 +95,8 @@ $(document).ready(function() {
 		event.preventDefault();
 		var band_id = $(event.target).attr('data-band_id');
 
-		    $(".gallery[data-band_id=" + band_id + "]").append("<input type='file' onchange=previewFile() data-id=" + findDataID() + ">");
-		    $(".gallery[data-band_id=" + band_id + "]").append("<span class='imageWrapper' data-id=" + findDataID() + "><img class='hidden imgPreview' data-id=" + findDataID() + " data-band_id=" + band_id + " src=''><span class='deleteX' data-id=" + findDataID() + ">[x]</span></span>");
+		    $(".gallery[data-band_id=" + band_id + "]").append("<input type='file' class='hidden' onchange=previewFile() data-id=" + findDataID() + ">");
+		    $(".gallery[data-band_id=" + band_id + "]").append("<div class='packageWrapper' data-id=" + findDataID() + "><div class='imageWrapper'><img class='hidden imgPreview' data-id=" + findDataID() + " data-band_id=" + band_id + " src=''></div><span class='deleteX' data-id=" + findDataID() + ">[x]</span></div>");
 
 		    $("input[type='file'][data-id=" + findDataID() +"]").click(); //auto-click the choose-file button
 	});
@@ -82,10 +107,36 @@ $(document).ready(function() {
 		console.log("dataID: "+dataID);
 		var arrayPosition = imageArray.indexOf(band_id+"_"+dataID);
 		imageArray.splice(arrayPosition,1);
-		$(".imageWrapper[data-id=" + dataID + "]").remove();
+		$(".packageWrapper[data-id=" + dataID + "]").remove();
 		$("input[type=file][data-id=" + dataID + "]").remove();
 		console.log("deleteX band_id: "+band_id);
 		showPlusButton(band_id);
+	});
+
+	$(document).on('click', '.addABand', function(event) {
+		event.preventDefault();
+		$(".bandSettingsWrapper").removeClass("hidden");
+		$("button#bandSettings").addClass("hidden");
+		$("body").animate({ scrollTop: $(document).height() }, "slow");		
+	});
+
+	$(document).on('click', '#submitSettings', function(event) {
+		event.preventDefault();
+		var colorScheme = bandSettings("colorScheme", "checked");
+		var galleryOrientation = bandSettings("galleryOrientation", "checked");
+		var otherGalleryOrientation = bandSettings("galleryOrientation", "not(:checked)");
+		var band_id = findBandID();
+		$("#bandWrapper").append("<div class='gutter'></div>");
+		if (galleryOrientation==="left"){
+			console.log("in the galleryOrientation=left");
+			$("#bandWrapper").append("<div class='outerWrapper wrapper'><div class='"+colorScheme+" gallery "+galleryOrientation+"' data-band_id="+band_id+"></div><div class='verticalGutter' data-band_id="+band_id+"></div><button class='"+otherGalleryOrientation+" "+colorScheme+" plusButton' data-band_id="+band_id+"><input class='"+colorScheme+" button' data-band_id="+band_id+" type='submit' value='+'></button></div>");
+		} else{
+			console.log("in the galleryOrientation=right");
+			$("#bandWrapper").append("<div class='outerWrapper wrapper'><button class='"+otherGalleryOrientation+" "+colorScheme+" plusButton' data-band_id="+band_id+"><input class='"+colorScheme+" button' data-band_id="+band_id+" type='submit' value='+'></button><div class='verticalGutter' data-band_id="+band_id+"></div><div class='"+colorScheme+" gallery "+galleryOrientation+"' data-band_id="+band_id+"></div></div>");
+		}
+		$("body").animate({ scrollTop: $(document).height() }, "slow");	
+		$(".bandSettingsWrapper").addClass("hidden");
+		$("button#bandSettings").removeClass("hidden");	
 	});
 
 
