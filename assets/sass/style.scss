@@ -134,6 +134,11 @@ input[type="file"] { //this is done so the choose file button is off-screen, bec
 	height: $galleryImageHeight;
 	width: $galleryImageWidth;
 	overflow: hidden;
+
+	&:hover {
+		// overflow: visible;
+		// z-index: 10;
+	}
 	// z-index: 1;
 }
 
